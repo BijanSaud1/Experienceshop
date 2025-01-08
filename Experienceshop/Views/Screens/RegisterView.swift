@@ -11,6 +11,7 @@ struct RegisterView: View {
     @State private var password: String = ""
     @State private var isRegistering: Bool = false
     @State private var errorMessage: String = ""
+    @State private var isLoggedIn: Bool = false
 
     var body: some View {
         ZStack {
@@ -95,6 +96,16 @@ struct RegisterView: View {
                     }
                 }
 
+                // Display welcome message and navigate to main view after successful registration
+                if isLoggedIn {
+                    Text("Welcome \(firstName), change your grocery shopping experience. Save time and money!")
+                        .foregroundColor(.white)
+                        .padding()
+                    NavigationLink(destination: HomeView(), isActive: $isLoggedIn) {
+                        EmptyView()
+                    }
+                }
+
                 Spacer()
             }
         }
@@ -137,11 +148,11 @@ struct RegisterView: View {
                 if let error = error {
                     errorMessage = "Failed to save user info: \(error.localizedDescription)"
                 } else {
-                    errorMessage = "Registration successful!"
+                    // Login user immediately after successful registration
+                    isLoggedIn = true
                 }
             }
         }
     }
-
-    
 }
+

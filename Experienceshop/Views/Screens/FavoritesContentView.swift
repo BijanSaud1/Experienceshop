@@ -23,6 +23,6 @@ struct FavoritesContentView: View {
                 Spacer()
             }
         }
-        .navigationBarHidden(true) // Explicitly hides any navigation bar
+
     }
 }

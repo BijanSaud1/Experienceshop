@@ -26,6 +26,7 @@ struct MainView: View {
                }
             
         }
+           .navigationBarHidden(true) // Explicitly hides any navigation bar
     }
 }
 
