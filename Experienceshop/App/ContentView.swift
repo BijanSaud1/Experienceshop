@@ -14,9 +14,7 @@ struct ContentView: View {
                 )
                 .edgesIgnoringSafeArea(.all)
 
-                VStack {
-                    Spacer() // Pushes content to the center
-
+                VStack(spacing: 20) {
                     // Title
                     Text("Welcome to Experience App")
                         .font(.largeTitle)
@@ -24,17 +22,9 @@ struct ContentView: View {
                         .foregroundColor(.white)
                         .padding(.top, 50)
 
-                    // Sub-text below the welcome message
-                    Text("Your grocery shopping experience made simple and affordable.")
-                        .font(.title2)
-                        .foregroundColor(.white)
-                        .padding(.top, 10)
-
-                    Spacer() // Pushes the content upward to be vertically centered
-
                     if let user = authManager.currentUser {
                         // Logged-in user: Show "Continue" button
-                        VStack(spacing: 20) {
+                        VStack(spacing: 10) {
                             Text("Hello, \(user.email ?? "User")!")
                                 .foregroundColor(.white)
                                 .font(.headline)
@@ -63,7 +53,7 @@ struct ContentView: View {
                         }
                     } else {
                         // Not logged-in: Show "Log In" and "Register" buttons
-                        VStack(spacing: 20) {
+                        VStack(spacing: 10) {
                             NavigationLink(destination: LoginView()) {
                                 Text("Log In")
                                     .font(.headline)
@@ -88,19 +78,10 @@ struct ContentView: View {
                         }
                     }
 
-                    Spacer() // Pushes everything to the center
+                    Spacer()
                 }
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-            .environmentObject(AuthManager()) // Pass the AuthManager without mock data
-            .previewLayout(.sizeThatFits)
-            .preferredColorScheme(.light) // You can change it to .dark for dark mode
     }
 }
