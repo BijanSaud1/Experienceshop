@@ -1,3 +1,9 @@
+//
+//  HomeContentView.swift
+//  Experienceshop
+//
+//  Created by Bijan Saud on 1/3/25.
+//
 import SwiftUI
 
 struct HomeContentView: View {
@@ -31,15 +37,5 @@ struct HomeContentView: View {
         .onAppear {
             viewModel.fetchUserStats(userId: "exampleUserId") // Replace with actual userId
         }
-    }
-}
-
-struct HomeContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        // Preview with mock data for HomeViewModel
-        HomeContentView()
-            .previewLayout(.sizeThatFits)
-            .preferredColorScheme(.light) // Change to .dark for dark mode
-            .environmentObject(HomeViewModel()) // Providing environment object for the preview
     }
 }
